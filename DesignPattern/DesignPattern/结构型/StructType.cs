@@ -1,0 +1,60 @@
+using System;
+using DesignPattern.结构型.外观模式.选课;
+using DesignPattern.结构型.适配器模式.对象适配器模式.电源插头;
+using DesignPattern.结构型.适配器模式.类适配器模式.电源插头;
+
+namespace DesignPattern.结构型
+{
+    /// <summary>
+    /// 结构型
+    /// 用于处理类或对象的组合
+    /// </summary>
+    public static class StructType
+    {
+        public static void Run()
+        {
+            AdapterTest();
+
+            FacadeTest();
+        }
+
+        /// <summary>
+        /// 适配器模式
+        /// Adapter模式使原本因为接口不兼容而不能一起工作的那些类可以一起工作
+        /// 将一个类的接口转换成客户希望的另外一个接口
+        /// </summary>
+        private static void AdapterTest()
+        {
+            {
+                //类适配器模式
+                IThreeHole threehole = new PowerAdapter();
+                threehole.Request();
+            }
+
+            {
+                //对象适配器模式
+                ThreeHole threehole = new PowerAdapter1();
+                threehole.Request();
+            }
+        }
+
+        /// <summary>
+        /// 外观模式
+        /// 为子系列中的一系列接口提供一个一致的界面，该模式提供了一个高层接口，则个接口使得这一子系列更加容易使用
+        /// </summary>
+        private static void FacadeTest()
+        {
+            {
+                var facade = new Facade();
+                if (facade.RegisterCourse("设计模式", "Learning Hard"))
+                {
+                    Console.WriteLine("选课成功");
+                }
+                else
+                {
+                    Console.WriteLine("选课失败");
+                }
+            }
+        }
+    }
+}

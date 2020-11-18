@@ -27,4 +27,5 @@ namespace DesignPattern.创建型.单例模式
             return _instance;
         }
     }
+
 }
