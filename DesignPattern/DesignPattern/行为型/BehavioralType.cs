@@ -1,7 +1,10 @@
 using System;
+using DesignPattern.行为型.命令模式.基本;
+using DesignPattern.行为型.命令模式.银行账户存取款;
 using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
+using Command = DesignPattern.行为型.命令模式.基本.Command;
 
 namespace DesignPattern.行为型
 {
@@ -9,13 +12,15 @@ namespace DesignPattern.行为型
     /// 行为型
     /// 用户描述对类或对象怎样交互和怎样分配职责
     /// </summary>
-    public  class BehavioralType
+    public class BehavioralType
     {
         public static void Run()
         {
-            ChainOfResponsibility();
+            //ChainOfResponsibility();
 
             // IteratorTest();
+
+            CommandTest();
         }
 
         /// <summary>
@@ -36,7 +41,6 @@ namespace DesignPattern.行为型
                 var requestComputers = new PurchaseRequest(40000.0, "电脑");
                 Approver manager = new Manager("LearningHard");
 
-
                 // 处理请求
                 manager.ProcessRequest(requestTelphone);
                 manager.ProcessRequest(requestSoftware);
@@ -50,12 +54,51 @@ namespace DesignPattern.行为型
         /// </summary>
         private static void IteratorTest()
         {
-            var aggregate = new  ConcreteAggregate();
+            var aggregate = new ConcreteAggregate();
             var iteraotr = aggregate.GetIterator();
             while (!iteraotr.IsEnd())
             {
                 Console.WriteLine(iteraotr.CurrentItem());
                 iteraotr.Next();
+            }
+        }
+
+        /// <summary>
+        /// 命令模式 ⭐⭐⭐⭐
+        /// 将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可取消的操作。
+        /// </summary>
+        private static void CommandTest()
+        {
+            {
+                Command command = new CommandA();
+                var i = new Invoke(command);
+                i.ExecuteCommand();
+            }
+            {
+                // 创建银行帐号
+                Account account = new Account();
+                // 创建一个存入500元的命令
+                MoneyInCommand commandIn = new MoneyInCommand(account,500);
+                // 创建一个调度者
+                var invoker = new Invoker();
+ 
+                // 执行存钱
+                invoker.ExecuteCommand(commandIn);
+                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+ 
+                // 再次存入500
+                MoneyInCommand commandIn2 = new MoneyInCommand(account, 500);
+                invoker.ExecuteCommand(commandIn2);
+                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+ 
+                // 取出300
+                var commandOut = new MoneyOutCommand(account, 300);
+                invoker.ExecuteCommand(commandOut);
+                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+
+                //重复
+                invoker.Redo();
+                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
             }
         }
     }
