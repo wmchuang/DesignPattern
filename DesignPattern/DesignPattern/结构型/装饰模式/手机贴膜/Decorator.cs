@@ -4,7 +4,7 @@ namespace DesignPattern.结构型.装饰模式.手机贴膜
 {
     public abstract class Decorator : Phone
     {
-        
+
         private Phone phone;
 
         public Decorator(Phone p)
@@ -16,59 +16,59 @@ namespace DesignPattern.结构型.装饰模式.手机贴膜
         {
             phone?.Print();
         }
-        
-        /// <summary>
-        /// 贴膜，即具体装饰者
-        /// </summary>
-        public class Sticker : Decorator
+    }
+
+    /// <summary>
+    /// 贴膜，即具体装饰者
+    /// </summary>
+    public class Sticker : Decorator
+    {
+        public Sticker(Phone p)
+            : base(p)
         {
-            public Sticker(Phone p)
-                : base(p)
-            { 
-            }
+        }
 
-            public override void Print()
-            {
-                base.Print();
+        public override void Print()
+        {
+            base.Print();
 
-                // 添加新的行为
-                AddSticker();      
-            }
-
-            /// <summary>
-            /// 新的行为方法
-            /// </summary>
-            public void AddSticker()
-            {
-                Console.WriteLine("现在苹果手机有贴膜了");
-            }
+            // 添加新的行为
+            AddSticker();
         }
 
         /// <summary>
-        /// 手机挂件
+        /// 新的行为方法
         /// </summary>
-        public class Accessories : Decorator
+        public void AddSticker()
         {
-            public Accessories(Phone p)
-                : base(p)
-            {
-            }
+            Console.WriteLine("现在苹果手机有贴膜了");
+        }
+    }
 
-            public override void Print()
-            {
-                base.Print();
+    /// <summary>
+    /// 手机挂件
+    /// </summary>
+    public class Accessories : Decorator
+    {
+        public Accessories(Phone p)
+            : base(p)
+        {
+        }
 
-                // 添加新的行为
-                AddAccessories();          
-            }
+        public override void Print()
+        {
+            base.Print();
 
-            /// <summary>
-            /// 新的行为方法
-            /// </summary>
-            public void AddAccessories()
-            {
-                Console.WriteLine("现在苹果手机有漂亮的挂件了");
-            }
+            // 添加新的行为
+            AddAccessories();
+        }
+
+        /// <summary>
+        /// 新的行为方法
+        /// </summary>
+        public void AddAccessories()
+        {
+            Console.WriteLine("现在苹果手机有漂亮的挂件了");
         }
     }
 }
