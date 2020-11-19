@@ -1,4 +1,6 @@
+using System;
 using DesignPattern.行为型.责任链模式.采购;
+using DesignPattern.行为型.迭代器模式.基本;
 
 namespace DesignPattern.行为型
 {
@@ -10,7 +12,9 @@ namespace DesignPattern.行为型
     {
         public static void Run()
         {
-            ChainOfResponsibility();
+           // ChainOfResponsibility();
+
+            IteratorTest();
         }
 
         /// <summary>
@@ -32,6 +36,21 @@ namespace DesignPattern.行为型
                 manager.ProcessRequest(requestTelphone);
                 manager.ProcessRequest(requestSoftware);
                 manager.ProcessRequest(requestComputers);
+            }
+        }
+
+        /// <summary>
+        /// 迭代器模式 ⭐⭐⭐⭐⭐
+        /// 提供一种方法顺序访问聚合对象中各个元素，而又不暴漏该对象的内部表示
+        /// </summary>
+        private static void IteratorTest()
+        {
+            var aggregate = new  ConcreteAggregate();
+            var iteraotr = aggregate.GetIterator();
+            while (!iteraotr.IsEnd())
+            {
+                Console.WriteLine(iteraotr.CurrentItem());
+                iteraotr.Next();
             }
         }
     }
