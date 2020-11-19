@@ -46,7 +46,7 @@ namespace DesignPattern.行为型.责任链模式.采购
         {
             if (request.Amount < 10000.0)
             {
-                Console.WriteLine("{0}-{1} approved the request of purshing {2}", this, Name, request.ProductName);
+                Console.WriteLine("{0}买 {1}", "主管", request.ProductName);
             }
             else if (NextApprover != null)
             {
@@ -67,7 +67,7 @@ namespace DesignPattern.行为型.责任链模式.采购
         {
             if (request.Amount < 25000.0)
             {
-                Console.WriteLine("{0}-{1} approved the request of purshing {2}", this, Name, request.ProductName);
+                Console.WriteLine("{0}买 {1}", "经理", request.ProductName);
             }
             else if (NextApprover != null)
             {
@@ -86,7 +86,7 @@ namespace DesignPattern.行为型.责任链模式.采购
         {
             if (request.Amount < 100000.0)
             {
-                Console.WriteLine("{0}-{1} approved the request of purshing {2}", this, Name, request.ProductName);
+                Console.WriteLine("{0}买 {1}", "总经理", request.ProductName);
             }
             else
             {

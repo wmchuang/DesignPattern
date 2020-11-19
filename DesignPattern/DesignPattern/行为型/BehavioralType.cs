@@ -1,4 +1,5 @@
 using System;
+using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
 
@@ -12,9 +13,9 @@ namespace DesignPattern.行为型
     {
         public static void Run()
         {
-           // ChainOfResponsibility();
+            ChainOfResponsibility();
 
-            IteratorTest();
+            // IteratorTest();
         }
 
         /// <summary>
@@ -24,11 +25,15 @@ namespace DesignPattern.行为型
         /// </summary>
         private static void ChainOfResponsibility()
         {
-          
             {
-                var requestTelphone = new PurchaseRequest(4000.0, "Telphone");
-                var requestSoftware = new PurchaseRequest(10000.0, "Visual Studio");
-                var requestComputers = new PurchaseRequest(40000.0, "Computers");
+                var hand = new HandlerA();
+                hand.HandlerRequest("1");
+                hand.HandlerRequest("2");
+            }
+            {
+                var requestTelphone = new PurchaseRequest(4000.0, "手机");
+                var requestSoftware = new PurchaseRequest(10000.0, "平板");
+                var requestComputers = new PurchaseRequest(40000.0, "电脑");
                 Approver manager = new Manager("LearningHard");
 
 
