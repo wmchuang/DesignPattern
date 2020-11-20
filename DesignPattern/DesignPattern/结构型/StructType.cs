@@ -4,6 +4,8 @@ using DesignPattern.结构型.代理模式.带货;
 using DesignPattern.结构型.外观模式.选课;
 using DesignPattern.结构型.桥接模式.基本;
 using DesignPattern.结构型.桥接模式.饮品店;
+using DesignPattern.结构型.组合模式.图形;
+using DesignPattern.结构型.组合模式.基本;
 using DesignPattern.结构型.装饰模式.基本;
 using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
@@ -33,7 +35,9 @@ namespace DesignPattern.结构型
 
             //ProxyTest();
 
-            BridgeTest();
+            //BridgeTest();
+
+            CompositeTest();
         }
 
         /// <summary>
@@ -152,7 +156,8 @@ namespace DesignPattern.结构型
         }
 
         /// <summary>
-        /// 桥接模式
+        /// 桥接模式 ⭐⭐⭐
+        /// 将抽象部分与它的实现部分分离，使得它们可以独立地变化
         /// </summary>
         private static void BridgeTest()
         {
@@ -182,6 +187,34 @@ namespace DesignPattern.结构型
                 medium.Make();
                 medium.SetCoffee(white);
                 medium.Make();
+            }
+        }
+
+        /// <summary>
+        /// 组合模式 ⭐⭐⭐⭐
+        /// 将对象组合成树形结构以表示 “部分-整体" 的层次结构
+        /// 组合模式使得用户对单个对象和组合对象的使用具有一致性
+        /// </summary>
+        private static void CompositeTest()
+        {
+            {
+                var leaf = new Leaf();
+                var com = new Composite();
+                var compo = new Composite();
+                compo.Add(leaf);
+                compo.Add(com);
+                compo.Display(2);
+            }
+            {
+                var com = new ComplexGraphics("复杂图形");
+                var line = new Line("线");
+                var circle = new Circle("圆");
+                com.Add(line);
+                com.Add(circle);
+                com.Draw();
+                
+                com.Remove(circle);
+                com.Draw();
             }
         }
     }
