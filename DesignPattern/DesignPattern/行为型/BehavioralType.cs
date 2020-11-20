@@ -164,12 +164,12 @@ namespace DesignPattern.行为型
                 content.AlgorithmInvoker();
             }
             {
-                var opration = new InterestOperation();
-                opration.SetStragety(new PersonalTaxStrategy());
-                Console.WriteLine("个人支付的税为{0}",opration.GetTax(5000));
+                var operation = new InterestOperation();
+                operation.SetStragety(new PersonalTaxStrategy());
+                Console.WriteLine("个人支付的税为{0}",operation.GetTax(5000));
                 
-                opration.SetStragety(new EnterpriseTaxStrategy());
-                Console.WriteLine("企业支付的税为{0}",opration.GetTax(50000));
+                operation.SetStragety(new EnterpriseTaxStrategy());
+                Console.WriteLine("企业支付的税为{0}",operation.GetTax(50000));
             }
         }
     }
