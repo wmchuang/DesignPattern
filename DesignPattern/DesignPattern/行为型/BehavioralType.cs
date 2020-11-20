@@ -1,10 +1,13 @@
 using System;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
+using DesignPattern.行为型.观察者模式.基本;
+using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
 using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
 using Command = DesignPattern.行为型.命令模式.基本.Command;
+using Subject = DesignPattern.行为型.观察者模式.基本.Subject;
 
 namespace DesignPattern.行为型
 {
@@ -20,7 +23,9 @@ namespace DesignPattern.行为型
 
             // IteratorTest();
 
-            CommandTest();
+            //CommandTest();
+
+            ObserverTest();
         }
 
         /// <summary>
@@ -76,21 +81,21 @@ namespace DesignPattern.行为型
             }
             {
                 // 创建银行帐号
-                Account account = new Account();
+                var account = new Account();
                 // 创建一个存入500元的命令
-                MoneyInCommand commandIn = new MoneyInCommand(account,500);
+                var commandIn = new MoneyInCommand(account, 500);
                 // 创建一个调度者
                 var invoker = new Invoker();
- 
+
                 // 执行存钱
                 invoker.ExecuteCommand(commandIn);
                 Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
- 
+
                 // 再次存入500
-                MoneyInCommand commandIn2 = new MoneyInCommand(account, 500);
+                var commandIn2 = new MoneyInCommand(account, 500);
                 invoker.ExecuteCommand(commandIn2);
                 Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
- 
+
                 // 取出300
                 var commandOut = new MoneyOutCommand(account, 300);
                 invoker.ExecuteCommand(commandOut);
@@ -99,6 +104,40 @@ namespace DesignPattern.行为型
                 //重复
                 invoker.Redo();
                 Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+            }
+        }
+
+        /// <summary>
+        /// 观察者模式
+        /// </summary>
+        private static void ObserverTest()
+        {
+            // {
+            //     Subject subject = new ConcreteSubject();
+            //
+            //     var a = new ObserverA();
+            //     var b = new ObserverB();
+            //     subject.Attach(a);
+            //     subject.Attach(b);
+            //     subject.Notify();
+            //     subject.Delete(b);
+            //     subject.Notify();
+            // }
+            // {
+            //     var cat = new Cat();
+            //     cat.Attach(new Master());
+            //     cat.Attach(new Mouse());
+            //     cat.Cry();
+            // }
+            {
+                var cat = new DesignPattern.行为型.观察者模式.委托.Cat();
+                 var master = new DesignPattern.行为型.观察者模式.委托.Master();
+                var mouse = new DesignPattern.行为型.观察者模式.委托.Mouse();
+                cat.Attach(master);
+                cat.Attach(mouse);
+                cat.Cry();
+                cat.Delete(master);
+                cat.Cry();
             }
         }
     }
