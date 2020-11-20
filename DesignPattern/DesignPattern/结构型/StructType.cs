@@ -1,4 +1,5 @@
 using System;
+using DesignPattern.结构型.享元模式.基本;
 using DesignPattern.结构型.代理模式.基本;
 using DesignPattern.结构型.代理模式.带货;
 using DesignPattern.结构型.外观模式.选课;
@@ -37,7 +38,9 @@ namespace DesignPattern.结构型
 
             //BridgeTest();
 
-            CompositeTest();
+            // CompositeTest();
+
+            FlyweightTest();
         }
 
         /// <summary>
@@ -183,7 +186,7 @@ namespace DesignPattern.结构型
                 large.SetCoffee(white);
                 large.Make();
 
-                var medium  = new MediumCupCoffee(black);
+                var medium = new MediumCupCoffee(black);
                 medium.Make();
                 medium.SetCoffee(white);
                 medium.Make();
@@ -212,10 +215,23 @@ namespace DesignPattern.结构型
                 com.Add(line);
                 com.Add(circle);
                 com.Draw();
-                
+
                 com.Remove(circle);
                 com.Draw();
             }
+        }
+
+        /// <summary>
+        /// 享元模式
+        /// </summary>
+        private static void FlyweightTest()
+        {
+            var factory = new FlyweightFactory();
+            var m = factory.GetFlyweight("A");
+            m.Operation(1);
+
+            var d = factory.GetFlyweight("A");
+            Console.WriteLine(d.GetState());
         }
     }
 }
