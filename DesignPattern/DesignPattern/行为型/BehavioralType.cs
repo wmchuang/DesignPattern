@@ -1,6 +1,8 @@
 using System;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
+using DesignPattern.行为型.策略模式.基本;
+using DesignPattern.行为型.策略模式.所得税;
 using DesignPattern.行为型.观察者模式.基本;
 using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
 using DesignPattern.行为型.责任链模式.基本;
@@ -13,7 +15,7 @@ namespace DesignPattern.行为型
 {
     /// <summary>
     /// 行为型
-    /// 用户描述对类或对象怎样交互和怎样分配职责
+    /// 用于描述对类或对象怎样交互和怎样分配职责
     /// </summary>
     public class BehavioralType
     {
@@ -25,7 +27,9 @@ namespace DesignPattern.行为型
 
             //CommandTest();
 
-            ObserverTest();
+            // ObserverTest();
+
+            StrategyTest();
         }
 
         /// <summary>
@@ -140,6 +144,32 @@ namespace DesignPattern.行为型
                 cat.Cry();
                 cat.Delete(master);
                 cat.Cry();
+            }
+        }
+
+        /// <summary>
+        /// 策略模式 ⭐⭐⭐⭐
+        /// 它定义了算法家族，分别封装起来，使得它们之间可以相互替换
+        /// 此模式让算法的变化，不会影响到使用该算法的客户
+        /// 抽取行为
+        /// </summary>
+        private static void StrategyTest()
+        {
+            {
+                var content = new Context();
+                content.AlgorithmInvoker();
+                content.SetStrategy(new ConcreteStrategyA());
+                content.AlgorithmInvoker();
+                content.SetStrategy(new ConcreteStrategyB());
+                content.AlgorithmInvoker();
+            }
+            {
+                var opration = new InterestOperation();
+                opration.SetStragety(new PersonalTaxStrategy());
+                Console.WriteLine("个人支付的税为{0}",opration.GetTax(5000));
+                
+                opration.SetStragety(new EnterpriseTaxStrategy());
+                Console.WriteLine("企业支付的税为{0}",opration.GetTax(50000));
             }
         }
     }
