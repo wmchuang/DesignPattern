@@ -11,9 +11,9 @@ namespace DesignPattern
         {
            // CreateType.Run();
 
-           //  StructType.Run();
+            StructType.Run();
 
-          BehavioralType.Run();
+            // BehavioralType.Run();
 
             Console.WriteLine("设计模式O(∩_∩)O!");
             Console.ReadKey();

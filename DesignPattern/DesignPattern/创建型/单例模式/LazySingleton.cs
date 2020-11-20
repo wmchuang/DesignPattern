@@ -2,7 +2,7 @@ using System;
 
 namespace DesignPattern.创建型.单例模式
 {
-    public class LazySingleton
+    public sealed class LazySingleton
     {
         private static readonly Lazy<LazySingleton> _instance = new Lazy<LazySingleton>(() => new LazySingleton());
 

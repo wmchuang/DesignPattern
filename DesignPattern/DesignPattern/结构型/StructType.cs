@@ -2,6 +2,8 @@ using System;
 using DesignPattern.结构型.代理模式.基本;
 using DesignPattern.结构型.代理模式.带货;
 using DesignPattern.结构型.外观模式.选课;
+using DesignPattern.结构型.桥接模式.基本;
+using DesignPattern.结构型.桥接模式.饮品店;
 using DesignPattern.结构型.装饰模式.基本;
 using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
@@ -14,18 +16,24 @@ namespace DesignPattern.结构型
     /// <summary>
     /// 结构型
     /// 用于处理类或对象的组合
+    /// 关心类和对象之间怎么组织起来形成大的结构. 主要使用继承来组织接口或实现.
+    /// 侧重于接口的使用，它做的一切工作都是对象或是类之间的交互
+    /// 结构型模式包容了对很多问题的解决。例如：扩展性（外观、组成、代理、装饰）封装性（适配器，桥接）。
+    /// 
     /// </summary>
     public static class StructType
     {
         public static void Run()
         {
-            AdapterTest();
+            //AdapterTest();
 
             //  FacadeTest();
 
             // DecoratorTest();
 
             //ProxyTest();
+
+            BridgeTest();
         }
 
         /// <summary>
@@ -140,6 +148,40 @@ namespace DesignPattern.结构型
             {
                 Person person = new Friend();
                 person.BuyProduct();
+            }
+        }
+
+        /// <summary>
+        /// 桥接模式
+        /// </summary>
+        private static void BridgeTest()
+        {
+            {
+                var a = new ConcreteImplementorA();
+                var b = new ConcreteImplementorB();
+
+                var ra = new RefinedAbstractionA();
+                var rb = new RefinedAbstractionB();
+                ra.SetImplementor(a);
+                ra.Operation();
+
+                ra.SetImplementor(b);
+                ra.Operation();
+            }
+
+            {
+                var black = new BlackCoffee();
+                var white = new WhiteCoffee();
+
+                var large = new LargeCupCoffee(black);
+                large.Make();
+                large.SetCoffee(white);
+                large.Make();
+
+                var medium  = new MediumCupCoffee(black);
+                medium.Make();
+                medium.SetCoffee(white);
+                medium.Make();
             }
         }
     }

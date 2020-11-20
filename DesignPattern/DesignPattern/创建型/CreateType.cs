@@ -9,6 +9,7 @@ namespace DesignPattern.创建型
     /// <summary>
     /// 创建型
     /// 主要用于创建对象
+    /// 所要表现的是对象的创建过程及和用户所使用的对象之间的关系.
     /// </summary>
     public static class CreateType
     {
