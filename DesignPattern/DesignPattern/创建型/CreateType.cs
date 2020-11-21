@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using DesignPattern.创建型.创建者模式.基本;
 using DesignPattern.创建型.单例模式;
 using DesignPattern.创建型.工厂模式.发奖;
 using DesignPattern.创建型.工厂模式.饭店做菜;
@@ -15,11 +16,13 @@ namespace DesignPattern.创建型
     {
         public static void Run()
         {
-            InstanceTest();
-
-            FactoryTest();
-
-            AbstractFactoryTest();
+            // InstanceTest();
+            //
+            // FactoryTest();
+            //
+            // AbstractFactoryTest();
+            
+            BuilderTest();
         }
 
         /// <summary>
@@ -81,6 +84,25 @@ namespace DesignPattern.创建型
                 shangHaiFactory.CreateYaJia().Print();
             }
          
+        }
+
+        /// <summary>
+        /// 创建者模式⭐⭐
+        /// 将一个负责对象的常见与它的表示分离，使得同样的构建过程可以创建不同的表示
+        /// </summary>
+        private static void BuilderTest()
+        {
+            {
+                var boss = new Boss();
+                var builder1 = new CommonBuilder();
+                var builder2 = new SeniorBuilder();
+                boss.SetBuilder(builder1);
+                
+                var computer = boss.GetComputer();
+                boss.Show(boss.GetComputer());
+                boss.SetBuilder(builder2);
+                boss.Show(boss.GetComputer());
+            }
         }
     }
 }

@@ -9,9 +9,9 @@ namespace DesignPattern
     {
         static void Main()
         {
-           // CreateType.Run();
+           CreateType.Run();
 
-            StructType.Run();
+           //  StructType.Run();
 
             // BehavioralType.Run();
 
