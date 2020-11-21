@@ -12,6 +12,7 @@ using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
 using DesignPattern.结构型.适配器模式.对象适配器模式.电源插头;
 using DesignPattern.结构型.适配器模式.类适配器模式.电源插头;
+using NUnit.Framework;
 using Decorator = DesignPattern.结构型.装饰模式.手机贴膜.Decorator;
 
 namespace DesignPattern.结构型
@@ -24,31 +25,16 @@ namespace DesignPattern.结构型
     /// 结构型模式包容了对很多问题的解决。例如：扩展性（外观、组成、代理、装饰）封装性（适配器，桥接）。
     /// 
     /// </summary>
-    public static class StructType
+    public class StructType
     {
-        public static void Run()
-        {
-            //AdapterTest();
-
-            //  FacadeTest();
-
-            // DecoratorTest();
-
-            //ProxyTest();
-
-            //BridgeTest();
-
-            // CompositeTest();
-
-            FlyweightTest();
-        }
 
         /// <summary>
         /// 适配器模式 ⭐⭐⭐⭐
         /// Adapter模式使原本因为接口不兼容而不能一起工作的那些类可以一起工作
         /// 将一个类的接口转换成客户希望的另外一个接口
         /// </summary>
-        private static void AdapterTest()
+        [Test]
+        public void AdapterTest()
         {
             {
                 ITarget adapter = new Adapter();
@@ -71,7 +57,8 @@ namespace DesignPattern.结构型
         /// 外观模式 ⭐⭐⭐⭐⭐
         /// 为子系列中的一系列接口提供一个一致的界面，该模式提供了一个高层接口，则个接口使得这一子系列更加容易使用
         /// </summary>
-        private static void FacadeTest()
+        [Test]
+        public void FacadeTest()
         {
             {
                 var facade = new DesignPattern.结构型.外观模式.基本.Facade();
@@ -95,7 +82,8 @@ namespace DesignPattern.结构型
         /// 动态地给一个对象添加一些额外的职责
         /// 就增加功能来说，装饰模式比添加子类更加灵活
         /// </summary>
-        private static void DecoratorTest()
+        [Test]
+        public void DecoratorTest()
         {
             {
                 var m = new ConcreteComponent();
@@ -146,7 +134,8 @@ namespace DesignPattern.结构型
         /// 为其他对象提供一种代理以控制对该对象的访问
         /// 为客户端提供一种中间层以控制对这个对象的访问
         /// </summary>
-        private static void ProxyTest()
+        [Test]
+        public void ProxyTest()
         {
             {
                 var sub = new Proxy();
@@ -162,7 +151,8 @@ namespace DesignPattern.结构型
         /// 桥接模式 ⭐⭐⭐
         /// 将抽象部分与它的实现部分分离，使得它们可以独立地变化
         /// </summary>
-        private static void BridgeTest()
+        [Test]
+        public void BridgeTest()
         {
             {
                 var a = new ConcreteImplementorA();
@@ -198,7 +188,8 @@ namespace DesignPattern.结构型
         /// 将对象组合成树形结构以表示 “部分-整体" 的层次结构
         /// 组合模式使得用户对单个对象和组合对象的使用具有一致性
         /// </summary>
-        private static void CompositeTest()
+        [Test]
+        public void CompositeTest()
         {
             {
                 var leaf = new Leaf();
@@ -225,7 +216,8 @@ namespace DesignPattern.结构型
         /// 享元模式 ⭐
         /// 运用共享技术有效地支持大量细粒度的对象
         /// </summary>
-        private static void FlyweightTest()
+        [Test]
+        public void FlyweightTest()
         {
             var factory = new FlyweightFactory();
             var m = factory.GetFlyweight("A");

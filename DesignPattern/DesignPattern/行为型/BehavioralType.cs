@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
 using DesignPattern.行为型.模板方法模式.基本;
@@ -7,10 +8,14 @@ using DesignPattern.行为型.策略模式.基本;
 using DesignPattern.行为型.策略模式.所得税;
 using DesignPattern.行为型.观察者模式.基本;
 using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
+using DesignPattern.行为型.解释器模式.四则运算;
+using DesignPattern.行为型.解释器模式.基本;
 using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
+using NUnit.Framework;
 using Command = DesignPattern.行为型.命令模式.基本.Command;
+using Context = DesignPattern.行为型.策略模式.基本.Context;
 using Subject = DesignPattern.行为型.观察者模式.基本.Subject;
 
 namespace DesignPattern.行为型
@@ -23,27 +28,14 @@ namespace DesignPattern.行为型
     /// </summary>
     public class BehavioralType
     {
-        public static void Run()
-        {
-            //ChainOfResponsibility();
-
-            // IteratorTest();
-
-            //CommandTest();
-
-            // ObserverTest();
-
-            //StrategyTest();
-
-            TemplateTest();
-        }
 
         /// <summary>
         /// 责任链模式 ⭐⭐
         /// 使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系
         /// 将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
         /// </summary>
-        private static void ChainOfResponsibility()
+        [Test]
+        public void ChainOfResponsibility()
         {
             {
                 var hand = new HandlerA();
@@ -67,7 +59,8 @@ namespace DesignPattern.行为型
         /// 迭代器模式 ⭐⭐⭐⭐⭐
         /// 提供一种方法顺序访问聚合对象中各个元素，而又不暴漏该对象的内部表示
         /// </summary>
-        private static void IteratorTest()
+        [Test]
+        public void IteratorTest()
         {
             var aggregate = new ConcreteAggregate();
             var iteraotr = aggregate.GetIterator();
@@ -82,7 +75,8 @@ namespace DesignPattern.行为型
         /// 命令模式 ⭐⭐⭐⭐
         /// 将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可取消的操作。
         /// </summary>
-        private static void CommandTest()
+        [Test]
+        public void CommandTest()
         {
             {
                 Command command = new CommandA();
@@ -122,7 +116,8 @@ namespace DesignPattern.行为型
         /// 定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。
         /// 这个主题对象在状态发生变化时，会通知所有观察者对象，让他们能够自动更新自己
         /// </summary>
-        private static void ObserverTest()
+        [Test]
+        public void ObserverTest()
         {
             // {
             //     Subject subject = new ConcreteSubject();
@@ -159,7 +154,8 @@ namespace DesignPattern.行为型
         /// 此模式让算法的变化，不会影响到使用该算法的客户
         /// 抽取行为
         /// </summary>
-        private static void StrategyTest()
+        [Test]
+        public void StrategyTest()
         {
             {
                 var content = new Context();
@@ -183,7 +179,8 @@ namespace DesignPattern.行为型
         /// 模板方法模式 ⭐⭐⭐
         /// 定义一个操作中算法的骨架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤
         /// </summary>
-        private static void TemplateTest()
+        [Test]
+        public void TemplateTest()
         {
             {
                 var a = new ConcreteClassA();
@@ -196,6 +193,41 @@ namespace DesignPattern.行为型
                 spinach.CookVegetabel();
                 var chineseCabbage = new ChineseCabbage();
                 chineseCabbage.CookVegetabel();
+            }
+        }
+
+        /// <summary>
+        /// 解释器模式 ⭐
+        /// 给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语句中的句子
+        /// </summary>
+        [Test]
+        public void InterpreterTest()
+        {
+            {
+                var context = new 解释器模式.基本.Context();
+                var list = new List<AbstractExpression>
+                {
+                    new TerminalExpression(),
+                    new NonterminalExpression(),
+                    new TerminalExpression(),
+                    new TerminalExpression()
+                };
+                list.ForEach(item => { item.Intesrpre(context); });
+            }
+            {
+                var str = "a+b-c";
+                var str1 = "a+b+c";
+                var dir = new Dictionary<string, int>()
+                {
+                    {"a", 1},
+                    {"b", 3},
+                    {"c", 2},
+                };
+                var cal = new Calculator(str);
+                Console.WriteLine(cal.run(dir));
+                
+                var cal1 = new Calculator(str1);
+                Console.WriteLine(cal1.run(dir));
             }
         }
     }

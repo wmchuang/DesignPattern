@@ -7,17 +7,17 @@ namespace DesignPattern
 {
     class Program
     {
-        static void Main()
-        {
-            // CreateType.Run();
-
-           //  StructType.Run();
-
-             BehavioralType.Run();
-
-            Console.WriteLine("设计模式O(∩_∩)O!");
-            Console.ReadKey();
-        }
+        // static void Main()
+        // {
+        //     // CreateType.Run();
+        //
+        //    //  StructType.Run();
+        //
+        //      BehavioralType.Run();
+        //
+        //     Console.WriteLine("设计模式O(∩_∩)O!");
+        //     Console.ReadKey();
+        // }
 
         private static void Print(string name)
         {
