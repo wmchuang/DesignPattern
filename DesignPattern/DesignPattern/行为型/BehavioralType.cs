@@ -1,6 +1,8 @@
 using System;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
+using DesignPattern.行为型.模板方法模式.基本;
+using DesignPattern.行为型.模板方法模式.炒菜;
 using DesignPattern.行为型.策略模式.基本;
 using DesignPattern.行为型.策略模式.所得税;
 using DesignPattern.行为型.观察者模式.基本;
@@ -31,7 +33,9 @@ namespace DesignPattern.行为型
 
             // ObserverTest();
 
-            StrategyTest();
+            //StrategyTest();
+
+            TemplateTest();
         }
 
         /// <summary>
@@ -139,7 +143,7 @@ namespace DesignPattern.行为型
             // }
             {
                 var cat = new DesignPattern.行为型.观察者模式.委托.Cat();
-                 var master = new DesignPattern.行为型.观察者模式.委托.Master();
+                var master = new DesignPattern.行为型.观察者模式.委托.Master();
                 var mouse = new DesignPattern.行为型.观察者模式.委托.Mouse();
                 cat.Attach(master);
                 cat.Attach(mouse);
@@ -168,10 +172,30 @@ namespace DesignPattern.行为型
             {
                 var operation = new InterestOperation();
                 operation.SetStragety(new PersonalTaxStrategy());
-                Console.WriteLine("个人支付的税为{0}",operation.GetTax(5000));
-                
+                Console.WriteLine("个人支付的税为{0}", operation.GetTax(5000));
+
                 operation.SetStragety(new EnterpriseTaxStrategy());
-                Console.WriteLine("企业支付的税为{0}",operation.GetTax(50000));
+                Console.WriteLine("企业支付的税为{0}", operation.GetTax(50000));
+            }
+        }
+
+        /// <summary>
+        /// 模板方法模式 ⭐⭐⭐
+        /// 定义一个操作中算法的骨架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤
+        /// </summary>
+        private static void TemplateTest()
+        {
+            {
+                var a = new ConcreteClassA();
+                a.TemplateMethod();
+                var b = new ConcreteClassB();
+                b.TemplateMethod();
+            }
+            {
+                var spinach = new Spinach();
+                spinach.CookVegetabel();
+                var chineseCabbage = new ChineseCabbage();
+                chineseCabbage.CookVegetabel();
             }
         }
     }
