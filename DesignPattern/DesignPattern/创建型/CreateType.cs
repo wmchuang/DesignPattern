@@ -1,6 +1,8 @@
+using System;
 using System.Threading.Tasks;
 using DesignPattern.创建型.创建者模式.基本;
 using DesignPattern.创建型.单例模式;
+using DesignPattern.创建型.原型模式.基本;
 using DesignPattern.创建型.工厂模式.发奖;
 using DesignPattern.创建型.工厂模式.饭店做菜;
 using DesignPattern.创建型.抽象工厂模式.绝味鸭脖;
@@ -22,7 +24,9 @@ namespace DesignPattern.创建型
             //
             // AbstractFactoryTest();
             
-            BuilderTest();
+            //BuilderTest();
+
+            PrototypeTest();
         }
 
         /// <summary>
@@ -104,5 +108,18 @@ namespace DesignPattern.创建型
                 boss.Show(boss.GetComputer());
             }
         }
+
+        /// <summary>
+        /// 原型模式 ⭐⭐⭐
+        /// 用原实例指向创建对象的种类，并且通过拷贝这些原型创建新的对象
+        /// </summary>
+        private static void PrototypeTest()
+        {
+            var prototype = new ConcretePrototype1("1",2);
+            Console.WriteLine($"{prototype.Id}{prototype.IntId}");
+            var clone = prototype.Clone();
+            Console.WriteLine($"{clone.Id}{clone.IntId}");
+        }
+
     }
 }
