@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DesignPattern.行为型.中介者模式.基本;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
 using DesignPattern.行为型.模板方法模式.基本;
@@ -229,6 +230,22 @@ namespace DesignPattern.行为型
                 var cal1 = new Calculator(str1);
                 Console.WriteLine(cal1.run(dir));
             }
+        }
+
+        /// <summary>
+        /// 中介者模式 ⭐⭐
+        /// 用一个中介对象来封装一系列的对象交互。中介者使个对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互
+        /// </summary>
+        [Test]
+        public void MediatorTest()
+        {
+            var a = new ColleagueA();
+            var b = new ColleagueB();
+            
+            var mediator = new ConcreteMediator(a,b);
+            a.SendMessage("你好",mediator);
+            b.SendMessage("我很好，谢谢",mediator);
+            
         }
     }
 }
