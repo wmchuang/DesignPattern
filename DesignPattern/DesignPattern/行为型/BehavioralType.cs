@@ -75,6 +75,7 @@ namespace DesignPattern.行为型
         /// <summary>
         /// 命令模式 ⭐⭐⭐⭐
         /// 将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可取消的操作。
+        /// 命令；接收者；调度者
         /// </summary>
         [Test]
         public void CommandTest()
@@ -246,6 +247,19 @@ namespace DesignPattern.行为型
             a.SendMessage("你好",mediator);
             b.SendMessage("我很好，谢谢",mediator);
             
+        }
+
+        /// <summary>
+        /// 状态模式 ⭐⭐⭐
+        /// 当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类
+        /// </summary>
+        [Test]
+        public void StateTest()
+        {
+            var c = new DesignPattern.行为型.状态模式.基本.Context();
+            c.Request();
+            c.Request();
+            c.Request();
         }
     }
 }

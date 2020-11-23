@@ -9,5 +9,7 @@ namespace DesignPattern.行为型.命令模式.基本
         /// 命令执行方法
         /// </summary>
         public abstract void Execute();
+
+      
     }
 }
