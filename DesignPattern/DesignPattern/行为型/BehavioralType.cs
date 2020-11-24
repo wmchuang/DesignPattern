@@ -7,6 +7,7 @@ using DesignPattern.行为型.模板方法模式.基本;
 using DesignPattern.行为型.模板方法模式.炒菜;
 using DesignPattern.行为型.策略模式.基本;
 using DesignPattern.行为型.策略模式.所得税;
+using DesignPattern.行为型.策略模式.鸭子;
 using DesignPattern.行为型.观察者模式.基本;
 using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
 using DesignPattern.行为型.解释器模式.四则运算;
@@ -174,6 +175,15 @@ namespace DesignPattern.行为型
 
                 operation.SetStragety(new EnterpriseTaxStrategy());
                 Console.WriteLine("企业支付的税为{0}", operation.GetTax(50000));
+            }
+            {
+                var duck = new RedDuck();
+                duck.PerFormFly();
+                duck.PerFormQuack();
+                
+                var rduck = new RubberDuck();
+                rduck.PerFormFly();
+                rduck.PerFormQuack();
             }
         }
 
