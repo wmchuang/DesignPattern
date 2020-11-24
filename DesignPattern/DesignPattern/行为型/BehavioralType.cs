@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using DesignPattern.行为型.中介者模式.基本;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
@@ -9,6 +10,7 @@ using DesignPattern.行为型.策略模式.基本;
 using DesignPattern.行为型.策略模式.所得税;
 using DesignPattern.行为型.策略模式.鸭子;
 using DesignPattern.行为型.观察者模式.基本;
+using DesignPattern.行为型.观察者模式.气象监测系统;
 using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
 using DesignPattern.行为型.解释器模式.四则运算;
 using DesignPattern.行为型.解释器模式.基本;
@@ -148,6 +150,19 @@ namespace DesignPattern.行为型
                 cat.Cry();
                 cat.Delete(master);
                 cat.Cry();
+            }
+            {
+                var weather = new WeatherData();
+                var party1 = new ForcastPartyDisplay();
+                var party2 = new ThirdPartyDisplay();
+                weather.RegisterObserver(party1);
+                weather.RegisterObserver(party2);
+                weather._data.Hum = 25;
+                weather._data.Tempoerature = 30;
+                weather.Notify();
+                
+                party1.Display();
+                party2.Display();
             }
         }
 

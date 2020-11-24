@@ -7,4 +7,5 @@ namespace DesignPattern.行为型.观察者模式.基本
     {
         public void Update();
     }
+    
 }
