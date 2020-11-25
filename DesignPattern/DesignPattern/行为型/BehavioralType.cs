@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using DesignPattern.行为型.中介者模式.基本;
+using DesignPattern.行为型.中介者模式.消息通知;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
 using DesignPattern.行为型.模板方法模式.基本;
@@ -265,13 +266,21 @@ namespace DesignPattern.行为型
         [Test]
         public void MediatorTest()
         {
-            var a = new ColleagueA();
-            var b = new ColleagueB();
+            {
+                var a = new ColleagueA();
+                var b = new ColleagueB();
             
-            var mediator = new ConcreteMediator(a,b);
-            a.SendMessage("你好",mediator);
-            b.SendMessage("我很好，谢谢",mediator);
-            
+                var mediator = new ConcreteMediator(a,b);
+                a.SendMessage("你好",mediator);
+                b.SendMessage("我很好，谢谢",mediator);
+            }
+            {
+                var mediator = new NotificateionEventHandler();
+                var admin = new Person(mediator,"管理员");
+                var user = new Person(mediator,"用户");
+                admin.Send("口号？");
+                user.Send("芝麻开门");
+            }
         }
 
         /// <summary>
