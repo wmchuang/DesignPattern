@@ -7,6 +7,7 @@ using DesignPattern.结构型.桥接模式.基本;
 using DesignPattern.结构型.桥接模式.饮品店;
 using DesignPattern.结构型.组合模式.图形;
 using DesignPattern.结构型.组合模式.基本;
+using DesignPattern.结构型.装饰模式.咖啡店;
 using DesignPattern.结构型.装饰模式.基本;
 using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
@@ -127,6 +128,14 @@ namespace DesignPattern.结构型
             //     var m4 = new CheckInputWrapper(m3);
             //     Console.WriteLine(m4.Get()[0].Message);
             // }
+
+            {
+                var dark = new DarkRoast("黑咖啡");
+                var sugar = new Sugar("加糖", dark);
+
+                Console.WriteLine(sugar.Cost());
+                Console.WriteLine(sugar.GetDescription());
+            }
         }
 
         /// <summary>
