@@ -14,7 +14,5 @@ namespace DesignPattern.行为型.备忘录模式.基本
         }
 
         public string GetState() => _state;
-
-        public void SetState(string state) => _state = state;
     }
 }
