@@ -5,6 +5,8 @@ using DesignPattern.行为型.中介者模式.基本;
 using DesignPattern.行为型.中介者模式.消息通知;
 using DesignPattern.行为型.命令模式.基本;
 using DesignPattern.行为型.命令模式.银行账户存取款;
+using DesignPattern.行为型.备忘录模式.基本;
+using DesignPattern.行为型.备忘录模式.手机通讯录;
 using DesignPattern.行为型.模板方法模式.基本;
 using DesignPattern.行为型.模板方法模式.炒菜;
 using DesignPattern.行为型.策略模式.基本;
@@ -310,6 +312,48 @@ namespace DesignPattern.行为型
                 {
                     element.Accept(new ConcreteVistor());
                 }
+            }
+        }
+
+        /// <summary>
+        /// 备忘录模式 ⭐
+        /// 在不破坏封装性的前提下，捕捉一个对象的内部状态，并在该对象之外保存这个状态，这样以后就可将该对象恢复到原先保存的状态
+        /// </summary>
+        [Test]
+        public void MementoTest()
+        {
+            {
+                var orig  = new Originator();
+                orig.Show();
+                
+                var caretaker = new Creataker
+                {
+                    Memento = orig.CreateMemento()
+                };
+                
+                orig.SetState("2");
+                orig.Show();
+                
+                orig.RestoreMemento(caretaker.Memento);
+                orig.Show();
+            }
+
+            {
+                var mobileOwner = new MobileOwner();
+                mobileOwner.Show();
+
+                var caretaker = new Caretaker
+                {
+                    ContactM = mobileOwner.CreateMemento()
+                };
+
+                mobileOwner.ContactPersons.RemoveAt(1);
+                mobileOwner.Show();
+                mobileOwner.ContactPersons.Clear();
+                mobileOwner.Show();
+                
+                mobileOwner.RestoreMemento(caretaker.ContactM);
+                mobileOwner.Show();
             }
         }
     }
