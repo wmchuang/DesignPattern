@@ -15,6 +15,7 @@ using DesignPattern.行为型.观察者模式.气象监测系统;
 using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
 using DesignPattern.行为型.解释器模式.四则运算;
 using DesignPattern.行为型.解释器模式.基本;
+using DesignPattern.行为型.访问者模式.基本;
 using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
@@ -294,6 +295,22 @@ namespace DesignPattern.行为型
             c.Request();
             c.Request();
             c.Request();
+        }
+
+        /// <summary>
+        /// 访问者模式 ⭐
+        /// 表示一个作用于某对象结构中的各元素的操作，它使你可以咋不改变各元素的类的前提下定义作用于这些元素的新操作
+        /// </summary>
+        [Test]
+        public void VisitorTest()
+        {
+            {
+                var str = new ObjectStructure();
+                foreach (var element in str.Elements)
+                {
+                    element.Accept(new ConcreteVistor());
+                }
+            }
         }
     }
 }
