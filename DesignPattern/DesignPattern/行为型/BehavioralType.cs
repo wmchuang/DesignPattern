@@ -15,6 +15,7 @@ using DesignPattern.行为型.策略模式.鸭子;
 using DesignPattern.行为型.观察者模式.基本;
 using DesignPattern.行为型.观察者模式.气象监测系统;
 using DesignPattern.行为型.观察者模式.猫叫老鼠逃;
+using DesignPattern.行为型.观察者模式.自带的接口;
 using DesignPattern.行为型.解释器模式.四则运算;
 using DesignPattern.行为型.解释器模式.基本;
 using DesignPattern.行为型.访问者模式.基本;
@@ -22,8 +23,10 @@ using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
 using NUnit.Framework;
+using Cat = DesignPattern.行为型.观察者模式.猫叫老鼠逃.Cat;
 using Command = DesignPattern.行为型.命令模式.基本.Command;
 using Context = DesignPattern.行为型.策略模式.基本.Context;
+using Person = DesignPattern.行为型.中介者模式.消息通知.Person;
 using Subject = DesignPattern.行为型.观察者模式.基本.Subject;
 
 namespace DesignPattern.行为型
@@ -167,6 +170,14 @@ namespace DesignPattern.行为型
                 
                 party1.Display();
                 party2.Display();
+            }
+            {
+                var person = new 观察者模式.自带的接口.Person();
+                var mouse = new 观察者模式.自带的接口.Mouse();
+                var cat = new DesignPattern.行为型.观察者模式.自带的接口.Cat(new List<IObserver<int>> {person,mouse});
+                
+                cat.Cry(1);
+                cat.Cry(2);
             }
         }
 
