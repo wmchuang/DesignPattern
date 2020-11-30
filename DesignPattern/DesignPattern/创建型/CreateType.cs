@@ -4,6 +4,7 @@ using DesignPattern.创建型.创建者模式.基本;
 using DesignPattern.创建型.单例模式;
 using DesignPattern.创建型.原型模式.基本;
 using DesignPattern.创建型.工厂模式.发奖;
+using DesignPattern.创建型.工厂模式.基本;
 using DesignPattern.创建型.工厂模式.饭店做菜;
 using DesignPattern.创建型.抽象工厂模式.绝味鸭脖;
 using NUnit.Framework;
@@ -56,6 +57,12 @@ namespace DesignPattern.创建型
                 commodity.SendCommodity("1", "2");
                 commodity = factory.GetCommodity(2);
                 commodity.SendCommodity("1", "2");
+            }
+            {
+                var a = new AFactory().CreateProdcut();
+                a.Show();
+                var b = new BFactory().CreateProdcut();
+                b.Show();
             }
         }
 
