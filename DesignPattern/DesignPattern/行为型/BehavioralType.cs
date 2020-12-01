@@ -174,10 +174,12 @@ namespace DesignPattern.行为型
             {
                 var person = new 观察者模式.自带的接口.Person();
                 var mouse = new 观察者模式.自带的接口.Mouse();
-                var cat = new DesignPattern.行为型.观察者模式.自带的接口.Cat(new List<IObserver<int>> {person,mouse});
+                var cat = new DesignPattern.行为型.观察者模式.自带的接口.Cat(new List<IObserver<int>> {person});
+                mouse.Subscribe(cat);
                 
                 cat.Cry(1);
-                cat.Cry(2);
+                mouse.OnCompleted();
+                cat.Cry(3);
             }
         }
 

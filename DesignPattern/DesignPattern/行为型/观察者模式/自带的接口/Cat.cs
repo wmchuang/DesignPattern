@@ -8,6 +8,9 @@ namespace DesignPattern.行为型.观察者模式.自带的接口
     /// </summary>
     public class Cat : IObservable<int>
     {
+        /// <summary>
+        /// 被订阅的观察者集合
+        /// </summary>
         private List<IObserver<int>> observers;
 
         public Cat(List<IObserver<int>> observers)
@@ -15,35 +18,44 @@ namespace DesignPattern.行为型.观察者模式.自带的接口
             this.observers = observers;
         }
 
+        /// <summary>
+        /// 被订阅
+        /// </summary>
+        /// <param name="observer"></param>
+        /// <returns></returns>
         public IDisposable Subscribe(IObserver<int> observer)
         {
             if (!observers.Contains(observer))
                 observers.Add(observer);
-            return new Unsubscriber(observers, observer);
+            return new UnSubscriber(observers, observer);
         }
         
         // TrackLocation 方法传递了一个包含纬度和经度数据的Location对象。 
         // 如果Location值不为null，则 TrackLocation 方法会调用每个观察程序的 OnNext 方法，
         // 否则调用OnError方法
-        public void Cry(Nullable<int> loc)
+        public void Cry(Nullable<int> value)
         {
             Console.WriteLine("猫叫");
             foreach (var observer in observers)
             {
-                if (!loc.HasValue)
+                if (!value.HasValue)
                     observer.OnError(new Exception());
                 else
-                    observer.OnNext(loc.Value);
+                    observer.OnNext(value.Value);
             }
         }
         
-        // 用于取消订阅通知的IDisposable对象的实现
-        private class Unsubscriber : IDisposable
+        
+        /// <summary>
+        /// 内部类
+        /// 用于取消订阅通知的IDisposable对象的实现
+        /// </summary>
+        private class UnSubscriber : IDisposable
         {
             private readonly List<IObserver<int>> _observers;
             private readonly IObserver<int> _observer;
 
-            public Unsubscriber(List<IObserver<int>> observers, IObserver<int> observer)
+            public UnSubscriber(List<IObserver<int>> observers, IObserver<int> observer)
             {
                 _observers = observers;
                 _observer = observer;
