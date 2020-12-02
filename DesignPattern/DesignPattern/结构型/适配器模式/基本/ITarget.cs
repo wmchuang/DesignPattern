@@ -1,5 +1,3 @@
-using System;
-
 namespace DesignPattern.结构型.适配器模式.基本
 {
     /// <summary>

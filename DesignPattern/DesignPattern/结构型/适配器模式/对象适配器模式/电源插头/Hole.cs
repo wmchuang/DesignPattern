@@ -32,7 +32,7 @@ namespace DesignPattern.结构型.适配器模式.对象适配器模式.电源�
     public class PowerAdapter1 : ThreeHole
     {
         // 引用两个孔插头的实例,从而将客户端与TwoHole联系起来
-        public TwoHole twoholeAdaptee = new TwoHole();
+        private TwoHole twoholeAdaptee = new TwoHole();
 
         /// <summary>
         /// 实现三个孔插头接口方法

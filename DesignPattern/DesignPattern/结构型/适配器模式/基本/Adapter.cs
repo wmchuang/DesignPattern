@@ -9,7 +9,7 @@ namespace DesignPattern.结构型.适配器模式.基本
     {
         private Adaptee _adaptee = new Adaptee();
 
-        public  void Request()
+        public void Request()
         {
             _adaptee.SpecificRequest();
         }
