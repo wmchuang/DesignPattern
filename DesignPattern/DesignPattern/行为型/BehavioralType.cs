@@ -22,6 +22,7 @@ using DesignPattern.行为型.访问者模式.基本;
 using DesignPattern.行为型.责任链模式.基本;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
+using DesignPattern.行为型.迭代器模式.自带;
 using NUnit.Framework;
 using Cat = DesignPattern.行为型.观察者模式.猫叫老鼠逃.Cat;
 using Command = DesignPattern.行为型.命令模式.基本.Command;
@@ -73,12 +74,21 @@ namespace DesignPattern.行为型
         [Test]
         public void IteratorTest()
         {
-            var aggregate = new ConcreteAggregate();
-            var iteraotr = aggregate.GetIterator();
-            while (!iteraotr.IsEnd())
             {
-                Console.WriteLine(iteraotr.CurrentItem());
-                iteraotr.Next();
+                var aggregate = new ConcreteAggregate();
+                var iteraotr = aggregate.GetIterator();
+                while (!iteraotr.IsEnd())
+                {
+                    Console.WriteLine(iteraotr.CurrentItem());
+                    iteraotr.Next();
+                }
+            }
+            {
+                var month = new MyItrerator.Months();
+                foreach (var item in month)
+                {
+                    Console.WriteLine(item);
+                }
             }
         }
 
