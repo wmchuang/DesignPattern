@@ -9,6 +9,7 @@ using DesignPattern.行为型.备忘录模式.基本;
 using DesignPattern.行为型.备忘录模式.手机通讯录;
 using DesignPattern.行为型.模板方法模式.基本;
 using DesignPattern.行为型.模板方法模式.炒菜;
+using DesignPattern.行为型.状态模式.糖果公司;
 using DesignPattern.行为型.策略模式.基本;
 using DesignPattern.行为型.策略模式.所得税;
 using DesignPattern.行为型.策略模式.鸭子;
@@ -316,10 +317,20 @@ namespace DesignPattern.行为型
         [Test]
         public void StateTest()
         {
-            var c = new DesignPattern.行为型.状态模式.基本.Context();
-            c.Request();
-            c.Request();
-            c.Request();
+            {
+                var c = new DesignPattern.行为型.状态模式.基本.Context();
+                c.Request();
+                c.Request();
+                c.Request();
+            }
+            {
+                var mach = new GumballMachine();
+                mach.InsertQuarter();
+                mach.TurnCrank();
+                mach.Dispense();
+                mach.Dispense();
+                mach.Dispense();
+            }
         }
 
         /// <summary>
