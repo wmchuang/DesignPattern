@@ -88,8 +88,8 @@ namespace DesignPattern.创建型
         }
 
         /// <summary>
-        /// 创建者模式⭐⭐
-        /// 将一个负责对象的常见与它的表示分离，使得同样的构建过程可以创建不同的表示
+        /// 创建者模式 ⭐⭐
+        /// 将一个负责对象的创建与它的表示分离，使得同样的构建过程可以创建不同的表示
         /// </summary>
         [Test]
         public void BuilderTest()
