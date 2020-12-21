@@ -12,6 +12,7 @@ using DesignPattern.行为型.模板方法模式.炒菜;
 using DesignPattern.行为型.状态模式.糖果公司;
 using DesignPattern.行为型.策略模式.基本;
 using DesignPattern.行为型.策略模式.所得税;
+using DesignPattern.行为型.策略模式.抽题;
 using DesignPattern.行为型.策略模式.鸭子;
 using DesignPattern.行为型.观察者模式.基本;
 using DesignPattern.行为型.观察者模式.气象监测系统;
@@ -227,6 +228,12 @@ namespace DesignPattern.行为型
                 var rduck = new RubberDuck();
                 rduck.PerFormFly();
                 rduck.PerFormQuack();
+            }
+            {
+                var content = new GetExamContext(10);
+                content.AddStrategy(new GetOneMonthExamStrategy());
+                content.AddStrategy(new GetTwoMonthExamStrategy());
+                content.GetExam();
             }
         }
 
