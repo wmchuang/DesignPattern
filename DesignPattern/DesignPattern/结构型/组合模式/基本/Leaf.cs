@@ -3,7 +3,7 @@ using System;
 namespace DesignPattern.结构型.组合模式.基本
 {
     /// <summary>
-    /// 单个节点
+    /// 简单页节点
     /// </summary>
     public class Leaf : Component
     {

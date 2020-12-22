@@ -4,6 +4,10 @@ using System.Runtime.CompilerServices;
 
 namespace DesignPattern.结构型.组合模式.基本
 {
+    /// <summary>
+    /// 复杂容器
+    /// 复杂容器可以包含叶节点和其他容器
+    /// </summary>
     public class Composite : Component
     {
 
