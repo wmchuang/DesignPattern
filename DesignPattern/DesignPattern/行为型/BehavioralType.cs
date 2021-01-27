@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
+using System.Threading.Channels;
 using DesignPattern.行为型.中介者模式.基本;
 using DesignPattern.行为型.中介者模式.消息通知;
 using DesignPattern.行为型.命令模式.基本;
@@ -21,7 +22,7 @@ using DesignPattern.行为型.观察者模式.自带的接口;
 using DesignPattern.行为型.解释器模式.四则运算;
 using DesignPattern.行为型.解释器模式.基本;
 using DesignPattern.行为型.访问者模式.基本;
-using DesignPattern.行为型.责任链模式.基本;
+using DesignPattern.行为型.责任链模式.抽题;
 using DesignPattern.行为型.责任链模式.采购;
 using DesignPattern.行为型.迭代器模式.基本;
 using DesignPattern.行为型.迭代器模式.自带;
@@ -29,6 +30,8 @@ using NUnit.Framework;
 using Cat = DesignPattern.行为型.观察者模式.猫叫老鼠逃.Cat;
 using Command = DesignPattern.行为型.命令模式.基本.Command;
 using Context = DesignPattern.行为型.策略模式.基本.Context;
+using GetExamContext = DesignPattern.行为型.策略模式.抽题.GetExamContext;
+using HandlerA = DesignPattern.行为型.责任链模式.基本.HandlerA;
 using Person = DesignPattern.行为型.中介者模式.消息通知.Person;
 using Subject = DesignPattern.行为型.观察者模式.基本.Subject;
 
@@ -42,7 +45,6 @@ namespace DesignPattern.行为型
     /// </summary>
     public class BehavioralType
     {
-
         /// <summary>
         /// 责任链模式 ⭐⭐
         /// 使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系
@@ -66,6 +68,16 @@ namespace DesignPattern.行为型
                 manager.ProcessRequest(requestTelphone);
                 manager.ProcessRequest(requestSoftware);
                 manager.ProcessRequest(requestComputers);
+            }
+            {
+                var queue = new Queue<HandlerEnum>();
+                queue.Enqueue(HandlerEnum.A);
+                queue.Enqueue(HandlerEnum.B);
+                queue.Enqueue(HandlerEnum.C);
+
+                var context = new DesignPattern.行为型.责任链模式.抽题.GetExamContext();
+                var list = context.GetExamIdList(queue);
+                list.ForEach(Console.WriteLine);
             }
         }
 
@@ -179,7 +191,7 @@ namespace DesignPattern.行为型
                 weather._data.Hum = 25;
                 weather._data.Tempoerature = 30;
                 weather.Notify();
-                
+
                 party1.Display();
                 party2.Display();
             }
@@ -188,7 +200,7 @@ namespace DesignPattern.行为型
                 var mouse = new 观察者模式.自带的接口.Mouse();
                 var cat = new DesignPattern.行为型.观察者模式.自带的接口.Cat(new List<IObserver<int>> {person});
                 mouse.Subscribe(cat);
-                
+
                 cat.Cry(1);
                 mouse.OnCompleted();
                 cat.Cry(3);
@@ -224,7 +236,7 @@ namespace DesignPattern.行为型
                 var duck = new RedDuck();
                 duck.PerFormFly();
                 duck.PerFormQuack();
-                
+
                 var rduck = new RubberDuck();
                 rduck.PerFormFly();
                 rduck.PerFormQuack();
@@ -287,7 +299,7 @@ namespace DesignPattern.行为型
                 };
                 var cal = new Calculator(str);
                 Console.WriteLine(cal.run(dir));
-                
+
                 var cal1 = new Calculator(str1);
                 Console.WriteLine(cal1.run(dir));
             }
@@ -303,15 +315,15 @@ namespace DesignPattern.行为型
             {
                 var a = new ColleagueA();
                 var b = new ColleagueB();
-            
-                var mediator = new ConcreteMediator(a,b);
-                a.SendMessage("你好",mediator);
-                b.SendMessage("我很好，谢谢",mediator);
+
+                var mediator = new ConcreteMediator(a, b);
+                a.SendMessage("你好", mediator);
+                b.SendMessage("我很好，谢谢", mediator);
             }
             {
                 var mediator = new NotificateionEventHandler();
-                var admin = new Person(mediator,"管理员");
-                var user = new Person(mediator,"用户");
+                var admin = new Person(mediator, "管理员");
+                var user = new Person(mediator, "用户");
                 admin.Send("口号？");
                 user.Send("芝麻开门");
             }
@@ -364,17 +376,17 @@ namespace DesignPattern.行为型
         public void MementoTest()
         {
             {
-                var orig  = new Originator();
+                var orig = new Originator();
                 orig.Show();
-                
+
                 var caretaker = new Creataker
                 {
                     Memento = orig.CreateMemento()
                 };
-                
+
                 orig.SetState("2");
                 orig.Show();
-                
+
                 orig.RestoreMemento(caretaker.Memento);
                 orig.Show();
             }
@@ -392,7 +404,7 @@ namespace DesignPattern.行为型
                 mobileOwner.Show();
                 mobileOwner.ContactPersons.Clear();
                 mobileOwner.Show();
-                
+
                 mobileOwner.RestoreMemento(caretaker.ContactM);
                 mobileOwner.Show();
             }

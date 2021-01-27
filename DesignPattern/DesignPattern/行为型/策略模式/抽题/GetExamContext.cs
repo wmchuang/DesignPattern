@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
-using NUnit.Framework.Internal.Execution;
 
 namespace DesignPattern.行为型.策略模式.抽题
 {
