@@ -349,6 +349,14 @@ namespace DesignPattern.行为型
                 mach.Dispense();
                 mach.Dispense();
                 mach.Dispense();
+                
+                mach.Print();
+                
+                mach.InsertQuarter();
+                mach.TurnCrank();
+                mach.Dispense();
+                
+                mach.Print();
             }
         }
 

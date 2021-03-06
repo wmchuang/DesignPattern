@@ -1,3 +1,4 @@
+using System;
 using DesignPattern.行为型.状态模式.基本;
 
 namespace DesignPattern.行为型.状态模式.糖果公司
@@ -25,10 +26,15 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         {
             _state = state;
         }
-        
+
         public void SetCount(int count)
         {
             Count = count;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine($"当前剩余糖果数量{Count}");
         }
 
 
