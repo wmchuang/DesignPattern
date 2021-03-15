@@ -42,12 +42,12 @@ namespace DesignPattern.创建型
             {
                 // 开始做西红柿炒蛋
                 Creator factory = new ShreddedPorkWithPotatoesFactory();
-                var tomatoScrambleEggs = factory.CreateFoddFactory();
+                var tomatoScrambleEggs = factory.CreateFoodFactory();
                 tomatoScrambleEggs.Print();
                 factory = new TomatoScrambledEggsFactory();
 
                 //开始做土豆肉丝
-                var shreddedPorkWithPotatoes = factory.CreateFoddFactory();
+                var shreddedPorkWithPotatoes = factory.CreateFoodFactory();
                 shreddedPorkWithPotatoes.Print();
             }
 

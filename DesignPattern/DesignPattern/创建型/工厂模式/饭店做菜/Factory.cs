@@ -6,7 +6,7 @@ namespace DesignPattern.创建型.工厂模式.饭店做菜
     public abstract class Creator
     {
         // 工厂方法
-        public abstract Food CreateFoddFactory();
+        public abstract Food CreateFoodFactory();
     }
 
     /// <summary>
@@ -18,7 +18,7 @@ namespace DesignPattern.创建型.工厂模式.饭店做菜
         /// 负责创建西红柿炒蛋这道菜
         /// </summary>
         /// <returns></returns>
-        public override Food CreateFoddFactory()
+        public override Food CreateFoodFactory()
         {
             return new TomatoScrambledEggs();
         }
@@ -33,7 +33,7 @@ namespace DesignPattern.创建型.工厂模式.饭店做菜
         /// 负责创建土豆肉丝这道菜
         /// </summary>
         /// <returns></returns>
-        public override Food CreateFoddFactory()
+        public override Food CreateFoodFactory()
         {
             return new ShreddedPorkWithPotatoes();
         }
