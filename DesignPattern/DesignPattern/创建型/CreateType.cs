@@ -59,9 +59,9 @@ namespace DesignPattern.创建型
                 commodity.SendCommodity("1", "2");
             }
             {
-                var a = new AFactory().CreateProdcut();
+                var a = new AFactory().CreateProduct();
                 a.Show();
-                var b = new BFactory().CreateProdcut();
+                var b = new BFactory().CreateProduct();
                 b.Show();
             }
         }
