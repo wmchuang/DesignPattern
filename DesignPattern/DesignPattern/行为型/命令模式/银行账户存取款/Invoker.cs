@@ -7,7 +7,7 @@ namespace DesignPattern.行为型.命令模式.银行账户存取款
     /// </summary>
     public class Invoker
     {
-        private List<Command> commands = new List<Command>(0);
+        private readonly List<Command> _commands = new List<Command>(0);
 
         /// <summary>
         /// 执行命令
@@ -16,7 +16,7 @@ namespace DesignPattern.行为型.命令模式.银行账户存取款
         public void ExecuteCommand(Command command)
         {
             command.Execute();
-            commands.Add(command);
+            _commands.Add(command);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace DesignPattern.行为型.命令模式.银行账户存取款
         {
             for (var i = 0; i < levels; i++)
             {
-                foreach (var m in commands)
+                foreach (var m in _commands)
                 {
                     m.Execute();
                 }

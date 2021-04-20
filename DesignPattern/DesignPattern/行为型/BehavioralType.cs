@@ -129,21 +129,21 @@ namespace DesignPattern.行为型
 
                 // 执行存钱
                 invoker.ExecuteCommand(commandIn);
-                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+                Console.WriteLine("当前余额 " + account.GetTotalAmount().ToString("N2"));
 
                 // 再次存入500
                 var commandIn2 = new MoneyInCommand(account, 500);
                 invoker.ExecuteCommand(commandIn2);
-                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+                Console.WriteLine("当前余额 " + account.GetTotalAmount().ToString("N2"));
 
                 // 取出300
                 var commandOut = new MoneyOutCommand(account, 300);
                 invoker.ExecuteCommand(commandOut);
-                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+                Console.WriteLine("当前余额 " + account.GetTotalAmount().ToString("N2"));
 
                 //重复
                 invoker.Redo();
-                Console.WriteLine("当前余额 " + account.GetTotalAmout().ToString("N2"));
+                Console.WriteLine("当前余额 " + account.GetTotalAmount().ToString("N2"));
             }
         }
 

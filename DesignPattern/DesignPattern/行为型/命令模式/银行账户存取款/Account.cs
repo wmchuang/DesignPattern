@@ -5,7 +5,7 @@ namespace DesignPattern.行为型.命令模式.银行账户存取款
         /// <summary>
         /// 帐号总金额
         /// </summary>
-        private decimal totalAmount { get; set; }
+        private decimal TotalAmount { get; set; }
 
         /// <summary>
         /// 存钱
@@ -13,7 +13,7 @@ namespace DesignPattern.行为型.命令模式.银行账户存取款
         /// <param name="amount"></param>
         public void MoneyIn(decimal amount)
         {
-            this.totalAmount += amount;
+            this.TotalAmount += amount;
         }
 
         /// <summary>
@@ -22,12 +22,12 @@ namespace DesignPattern.行为型.命令模式.银行账户存取款
         /// <param name="amount"></param>
         public void MoneyOut(decimal amount)
         {
-            this.totalAmount -= amount;
+            this.TotalAmount -= amount;
         }
 
-        public decimal GetTotalAmout()
+        public decimal GetTotalAmount()
         {
-            return totalAmount;
+            return TotalAmount;
         }
     }
 }
