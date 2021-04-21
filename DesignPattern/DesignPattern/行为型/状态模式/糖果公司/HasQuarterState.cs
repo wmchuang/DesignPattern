@@ -3,12 +3,11 @@ using System;
 namespace DesignPattern.行为型.状态模式.糖果公司
 {
     /// <summary>
-    /// 有币状态
+    ///     有币状态
     /// </summary>
     public class HasQuarterState : IState
     {
-
-        private GumballMachine _gumballMachine;
+        private readonly GumballMachine _gumballMachine;
 
         public HasQuarterState(GumballMachine gumballMachine)
         {

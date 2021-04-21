@@ -1,22 +1,20 @@
-using System.Net.NetworkInformation;
-
 namespace DesignPattern.结构型.桥接模式.基本
 {
     /// <summary>
-    /// 抽象类
+    ///     抽象类
     /// </summary>
     public abstract class Abstraction
     {
-        private Implementor _imMplementor;
+        private Implementor _implementor;
 
-        public void SetImplementor(Implementor imMplementor)
+        public void SetImplementor(Implementor implementor)
         {
-            this._imMplementor = imMplementor;
+            _implementor = implementor;
         }
 
         public virtual void Operation()
         {
-            _imMplementor.OperationImp();
+            _implementor.OperationImp();
         }
     }
 }

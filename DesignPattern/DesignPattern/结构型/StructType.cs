@@ -2,37 +2,33 @@ using System;
 using DesignPattern.结构型.享元模式.基本;
 using DesignPattern.结构型.代理模式.基本;
 using DesignPattern.结构型.代理模式.带货;
-using DesignPattern.结构型.外观模式.选课;
+using DesignPattern.结构型.外观模式.基本;
 using DesignPattern.结构型.桥接模式.基本;
 using DesignPattern.结构型.桥接模式.饮品店;
 using DesignPattern.结构型.组合模式.图形;
 using DesignPattern.结构型.组合模式.基本;
 using DesignPattern.结构型.装饰模式.咖啡店;
 using DesignPattern.结构型.装饰模式.基本;
-using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
 using DesignPattern.结构型.适配器模式.对象适配器模式.电源插头;
 using DesignPattern.结构型.适配器模式.类适配器模式.电源插头;
 using NUnit.Framework;
-using Decorator = DesignPattern.结构型.装饰模式.手机贴膜.Decorator;
 
 namespace DesignPattern.结构型
 {
     /// <summary>
-    /// 结构型
-    /// 用于处理类或对象的组合
-    /// 关心类和对象之间怎么组织起来形成大的结构. 主要使用继承来组织接口或实现.
-    /// 侧重于接口的使用，它做的一切工作都是对象或是类之间的交互
-    /// 结构型模式包容了对很多问题的解决。例如：扩展性（外观、组成、代理、装饰）封装性（适配器，桥接）。
-    /// 
+    ///     结构型
+    ///     用于处理类或对象的组合
+    ///     关心类和对象之间怎么组织起来形成大的结构. 主要使用继承来组织接口或实现.
+    ///     侧重于接口的使用，它做的一切工作都是对象或是类之间的交互
+    ///     结构型模式包容了对很多问题的解决。例如：扩展性（外观、组成、代理、装饰）封装性（适配器，桥接）。
     /// </summary>
     public class StructType
     {
-
         /// <summary>
-        /// 适配器模式 ⭐⭐⭐⭐
-        /// Adapter模式使原本因为接口不兼容而不能一起工作的那些类可以一起工作
-        /// 将一个类的接口转换成客户希望的另外一个接口
+        ///     适配器模式 ⭐⭐⭐⭐
+        ///     Adapter模式使原本因为接口不兼容而不能一起工作的那些类可以一起工作
+        ///     将一个类的接口转换成客户希望的另外一个接口
         /// </summary>
         [Test]
         public void AdapterTest()
@@ -55,33 +51,29 @@ namespace DesignPattern.结构型
         }
 
         /// <summary>
-        /// 外观模式 ⭐⭐⭐⭐⭐
-        /// 为子系列中的一系列接口提供一个一致的界面，该模式提供了一个高层接口，则个接口使得这一子系列更加容易使用
+        ///     外观模式 ⭐⭐⭐⭐⭐
+        ///     为子系列中的一系列接口提供一个一致的界面，该模式提供了一个高层接口，则个接口使得这一子系列更加容易使用
         /// </summary>
         [Test]
         public void FacadeTest()
         {
             {
-                var facade = new DesignPattern.结构型.外观模式.基本.Facade();
+                var facade = new Facade();
                 facade.Print();
             }
             {
-                var facade = new Facade();
+                var facade = new 外观模式.选课.Facade();
                 if (facade.RegisterCourse("设计模式", "奇奇"))
-                {
                     Console.WriteLine("选课成功");
-                }
                 else
-                {
                     Console.WriteLine("选课失败");
-                }
             }
         }
 
         /// <summary>
-        /// 装饰模式 ⭐⭐⭐
-        /// 动态地给一个对象添加一些额外的职责
-        /// 就增加功能来说，装饰模式比添加子类更加灵活
+        ///     装饰模式 ⭐⭐⭐
+        ///     动态地给一个对象添加一些额外的职责
+        ///     就增加功能来说，装饰模式比添加子类更加灵活
         /// </summary>
         [Test]
         public void DecoratorTest()
@@ -139,9 +131,9 @@ namespace DesignPattern.结构型
         }
 
         /// <summary>
-        /// 代理模式 ⭐⭐⭐⭐
-        /// 为其他对象提供一种代理以控制对该对象的访问
-        /// 为客户端提供一种中间层以控制对这个对象的访问
+        ///     代理模式 ⭐⭐⭐⭐
+        ///     为其他对象提供一种代理以控制对该对象的访问
+        ///     为客户端提供一种中间层以控制对这个对象的访问
         /// </summary>
         [Test]
         public void ProxyTest()
@@ -157,8 +149,8 @@ namespace DesignPattern.结构型
         }
 
         /// <summary>
-        /// 桥接模式 ⭐⭐⭐
-        /// 将抽象部分与它的实现部分分离，使得它们可以独立地变化
+        ///     桥接模式 ⭐⭐⭐
+        ///     将抽象部分与它的实现部分分离，使得它们可以独立地变化
         /// </summary>
         [Test]
         public void BridgeTest()
@@ -193,9 +185,9 @@ namespace DesignPattern.结构型
         }
 
         /// <summary>
-        /// 组合模式 ⭐⭐⭐⭐
-        /// 将对象组合成树形结构以表示 “部分-整体" 的层次结构
-        /// 组合模式使得用户对单个对象和组合对象的使用具有一致性
+        ///     组合模式 ⭐⭐⭐⭐
+        ///     将对象组合成树形结构以表示 “部分-整体" 的层次结构
+        ///     组合模式使得用户对单个对象和组合对象的使用具有一致性
         /// </summary>
         [Test]
         public void CompositeTest()
@@ -222,8 +214,8 @@ namespace DesignPattern.结构型
         }
 
         /// <summary>
-        /// 享元模式 ⭐
-        /// 运用共享技术有效地支持大量细粒度的对象
+        ///     享元模式 ⭐
+        ///     运用共享技术有效地支持大量细粒度的对象
         /// </summary>
         [Test]
         public void FlyweightTest()

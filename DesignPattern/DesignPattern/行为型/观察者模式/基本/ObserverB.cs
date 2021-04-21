@@ -4,9 +4,8 @@ namespace DesignPattern.行为型.观察者模式.基本
 {
     public class ObserverB : IObserver
     {
-
         /// <summary>
-        /// 具体的订阅者
+        ///     具体的订阅者
         /// </summary>
         public void Update()
         {

@@ -1,10 +1,11 @@
 using System;
-using DesignPattern.行为型.状态模式.基本;
 
 namespace DesignPattern.行为型.状态模式.糖果公司
 {
     public class GumballMachine
     {
+        private IState _state;
+
         public GumballMachine()
         {
             NoQuarterState = new NoQuarterState(this);
@@ -19,8 +20,6 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         public SoldState SoldState { get; set; }
 
         public int Count { get; set; }
-
-        private IState _state;
 
         public void SetState(IState state)
         {
@@ -37,9 +36,8 @@ namespace DesignPattern.行为型.状态模式.糖果公司
             Console.WriteLine($"当前剩余糖果数量{Count}");
         }
 
-
         /// <summary>
-        /// 投币
+        ///     投币
         /// </summary>
         public void InsertQuarter()
         {
@@ -47,7 +45,7 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         }
 
         /// <summary>
-        /// 退币
+        ///     退币
         /// </summary>
         public void EjectQuarter()
         {
@@ -55,7 +53,7 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         }
 
         /// <summary>
-        /// 转动曲柄
+        ///     转动曲柄
         /// </summary>
         public void TurnCrank()
         {
@@ -63,12 +61,11 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         }
 
         /// <summary>
-        /// 发放糖果
+        ///     发放糖果
         /// </summary>
         public void Dispense()
         {
             _state.Dispense();
         }
-
     }
 }

@@ -3,12 +3,11 @@ using System;
 namespace DesignPattern.行为型.状态模式.糖果公司
 {
     /// <summary>
-    /// 销售状态
+    ///     销售状态
     /// </summary>
     public class SoldState : IState
     {
-
-        private GumballMachine _gumballMachine;
+        private readonly GumballMachine _gumballMachine;
 
         public SoldState(GumballMachine gumballMachine)
         {

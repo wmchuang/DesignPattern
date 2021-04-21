@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace DesignPattern.结构型.桥接模式.基本
 {

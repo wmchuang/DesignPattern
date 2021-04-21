@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace DesignPattern.行为型.访问者模式.基本
 {
     /// <summary>
-    /// 对象结构
+    ///     对象结构
     /// </summary>
     public class ObjectStructure
     {
@@ -18,13 +17,9 @@ namespace DesignPattern.行为型.访问者模式.基本
             {
                 var ranNum = ran.Next(10);
                 if (ranNum > 5)
-                {
                     Elements.Add(new ElementA());
-                }
                 else
-                {
                     Elements.Add(new ElementB());
-                }
             }
         }
     }

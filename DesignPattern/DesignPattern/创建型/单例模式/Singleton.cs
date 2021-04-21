@@ -14,6 +14,9 @@ namespace DesignPattern.创建型.单例模式
         {
             Console.WriteLine("饿汉式被创建");
         }
+
+        //这里的 new Singleton() 等同于在静态构造函数中实例化。在 C# 7 中还可以进一步简写如下：
+        public static Singleton Instance { get; } = new Singleton();
         //
         // public static Singleton GetInstance()
         // {
@@ -24,9 +27,5 @@ namespace DesignPattern.创建型.单例模式
         {
             Console.WriteLine("测试");
         }
-
-        //这里的 new Singleton() 等同于在静态构造函数中实例化。在 C# 7 中还可以进一步简写如下：
-        public static Singleton Instance { get; } = new Singleton();
-        
     }
 }

@@ -3,12 +3,13 @@ using System;
 namespace DesignPattern.结构型.外观模式.选课
 {
     /// <summary>
-    /// 外观类 处理对象交互
+    ///     外观类 处理对象交互
     /// </summary>
     public class Facade
     {
-        private RegisterCourse registerCourse;
-        private NotifyStudent notifyStu;
+        private readonly NotifyStudent notifyStu;
+        private readonly RegisterCourse registerCourse;
+
         public Facade()
         {
             registerCourse = new RegisterCourse();
@@ -17,16 +18,14 @@ namespace DesignPattern.结构型.外观模式.选课
 
         public bool RegisterCourse(string courseName, string studentName)
         {
-            if (!registerCourse.CheckAvailable(courseName))
-            {
-                return false;
-            }
+            if (!registerCourse.CheckAvailable(courseName)) return false;
 
             return notifyStu.Notify(studentName);
         }
     }
-    
+
     #region 子系统
+
     // 相当于子系统A
     public class RegisterCourse
     {
@@ -46,5 +45,6 @@ namespace DesignPattern.结构型.外观模式.选课
             return true;
         }
     }
+
     #endregion
 }

@@ -3,7 +3,7 @@ using System;
 namespace DesignPattern.行为型.访问者模式.基本
 {
     /// <summary>
-    /// 具体访问者
+    ///     具体访问者
     /// </summary>
     public class ConcreteVisitor : IVisitor
     {

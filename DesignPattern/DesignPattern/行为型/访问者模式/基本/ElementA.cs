@@ -3,7 +3,7 @@ using System;
 namespace DesignPattern.行为型.访问者模式.基本
 {
     /// <summary>
-    /// 具体元素A
+    ///     具体元素A
     /// </summary>
     public class ElementA : Element
     {
