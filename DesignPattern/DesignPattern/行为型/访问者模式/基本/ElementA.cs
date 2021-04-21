@@ -7,10 +7,9 @@ namespace DesignPattern.行为型.访问者模式.基本
     /// </summary>
     public class ElementA : Element
     {
-
-        public override void Accept(IVistor vistor)
+        public override void Accept(IVisitor visitor)
         {
-            vistor.Visit(this);
+            visitor.Visit(this);
         }
 
         public override void Print()

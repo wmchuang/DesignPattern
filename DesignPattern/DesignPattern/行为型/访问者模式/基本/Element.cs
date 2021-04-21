@@ -5,7 +5,7 @@ namespace DesignPattern.行为型.访问者模式.基本
     /// </summary>
     public abstract class Element
     {
-        public abstract void Accept(IVistor vistor);
+        public abstract void Accept(IVisitor visitor);
         public abstract void Print();
     }
 }

@@ -5,9 +5,8 @@ namespace DesignPattern.行为型.访问者模式.基本
     /// <summary>
     /// 具体访问者
     /// </summary>
-    public class ConcreteVistor : IVistor
+    public class ConcreteVisitor : IVisitor
     {
-
         public void Visit(ElementA a)
         {
             a.Print();

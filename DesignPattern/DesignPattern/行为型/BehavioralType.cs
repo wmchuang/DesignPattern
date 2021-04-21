@@ -371,7 +371,7 @@ namespace DesignPattern.行为型
                 var str = new ObjectStructure();
                 foreach (var element in str.Elements)
                 {
-                    element.Accept(new ConcreteVistor());
+                    element.Accept(new ConcreteVisitor());
                 }
             }
         }
