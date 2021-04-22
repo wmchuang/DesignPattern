@@ -12,7 +12,7 @@ namespace DesignPattern.结构型.装饰模式.咖啡店
 
         protected string Description { get; }
 
-        public string GetDescription() => Description;
+        public virtual string GetDescription() => Description;
 
         public abstract double Cost();
     }

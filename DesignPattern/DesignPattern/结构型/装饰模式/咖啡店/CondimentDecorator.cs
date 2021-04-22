@@ -5,7 +5,6 @@ namespace DesignPattern.结构型.装饰模式.咖啡店
     /// </summary>
     public class CondimentDecorator : Beverage
     {
-
         private readonly Beverage _beverage;
 
         protected CondimentDecorator(string description, Beverage beverage) : base(description)
@@ -18,7 +17,7 @@ namespace DesignPattern.结构型.装饰模式.咖啡店
             return _beverage.Cost();
         }
 
-        protected new string GetDescription()
+        public override string GetDescription()
         {
             return _beverage.GetDescription();
         }

@@ -9,6 +9,7 @@ using DesignPattern.结构型.组合模式.图形;
 using DesignPattern.结构型.组合模式.基本;
 using DesignPattern.结构型.装饰模式.咖啡店;
 using DesignPattern.结构型.装饰模式.基本;
+using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
 using DesignPattern.结构型.适配器模式.对象适配器模式.电源插头;
 using DesignPattern.结构型.适配器模式.类适配器模式.电源插头;
@@ -86,27 +87,26 @@ namespace DesignPattern.结构型
                 var decoratorB = new DecoratorB(decoratorA);
                 decoratorB.Work();
             }
-            // {
-            //     // 我买了个苹果手机
-            //     Phone phone = new ApplePhone();
-            //
-            //     // 现在想贴膜了
-            //     var applePhoneWithSticker = new Sticker(phone);
-            //     // 扩展贴膜行为
-            //     applePhoneWithSticker.Print();
-            //     Console.WriteLine("----------------------\n");
-            //
-            //     // 现在我想有挂件了
-            //     var applePhoneWithAccessories = new Accessories(phone);
-            //     // 扩展手机挂件行为
-            //     applePhoneWithAccessories.Print();
-            //     Console.WriteLine("----------------------\n");
-            //
-            //     // 现在我同时有贴膜和手机挂件了
-            //     var sticker = new Sticker(phone);
-            //     var applePhoneWithAccessoriesAndSticker = new Accessories(sticker);
-            //     applePhoneWithAccessoriesAndSticker.Print();
-            // }
+            {
+                // 我买了个苹果手机
+                Phone phone = new ApplePhone();
+            
+                // 现在想贴膜了
+                var applePhoneWithSticker = new Sticker(phone);
+                // 扩展贴膜行为
+                applePhoneWithSticker.Print();
+            
+                // 现在我想有挂件了
+                var applePhoneWithAccessories = new Accessories(phone);
+                // 扩展手机挂件行为
+                applePhoneWithAccessories.Print();
+                Console.WriteLine("----------------------");
+            
+                // 现在我同时有贴膜和手机挂件了
+                var sticker = new Sticker(phone);
+                var applePhoneWithAccessoriesAndSticker = new Accessories(sticker);
+                applePhoneWithAccessoriesAndSticker.Print();
+            }
 
             // {
             //     AbstractMessage message = new SqlMessage();
@@ -124,9 +124,9 @@ namespace DesignPattern.结构型
             {
                 var dark = new DarkRoast("黑咖啡");
                 var sugar = new Sugar("加糖", dark);
-
-                Console.WriteLine(sugar.Cost());
-                Console.WriteLine(sugar.GetDescription());
+                Console.WriteLine($"{sugar.GetDescription()}{sugar.Cost()}元");;
+                var milk = new Milk("加奶", sugar);
+                Console.WriteLine($"{milk.GetDescription()}{milk.Cost()}元");;
             }
         }
 

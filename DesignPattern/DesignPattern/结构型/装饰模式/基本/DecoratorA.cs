@@ -8,7 +8,7 @@ namespace DesignPattern.结构型.装饰模式.基本
     public class DecoratorA : Decorator
     {
 
-        public DecoratorA(Component innerCompomponent) : base(innerCompomponent)
+        public DecoratorA(Component innerComponent) : base(innerComponent)
         {
         }
 
