@@ -11,7 +11,7 @@ namespace DesignPattern.结构型.桥接模式.饮品店
         public override void Make()
         {
             Console.Write("中杯");
-            _makeCoffee.Making();
+            MakeCoffee.Making();
         }
     }
 }
