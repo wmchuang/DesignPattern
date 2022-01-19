@@ -21,10 +21,22 @@ namespace DesignPattern.创建型.单例模式
             if (_instance != null) return _instance;
             lock (Locker)
             {
-                _instance ??= new Singleton1();
+                if (_instance == null)
+                {
+                    // ReSharper disable once PossibleMultipleWriteAccessInDoubleCheckLocking
+                    _instance = new Singleton1();
+                    return _instance;
+                }
+
+                // _instance ??= new Singleton1();
             }
 
             return _instance;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine("测试");
         }
     }
 }

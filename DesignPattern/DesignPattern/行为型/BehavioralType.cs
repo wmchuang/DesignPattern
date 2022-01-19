@@ -33,6 +33,27 @@ using Person = DesignPattern.行为型.观察者模式.自带的接口.Person;
 
 namespace DesignPattern.行为型
 {
+    public class B
+    {
+        int x = 1;
+
+        public B(int x)
+        {
+            Console.WriteLine(x);
+            Console.WriteLine(this.x);
+        }
+    }
+
+    public class D : B
+    {
+        int y = 1;
+
+        public D(int x) : base(x + 1)
+        {
+            Console.WriteLine(x);
+        }
+    }
+
     /// <summary>
     ///     行为型
     ///     用于描述对类或对象怎样交互和怎样分配职责
@@ -41,6 +62,12 @@ namespace DesignPattern.行为型
     /// </summary>
     public class BehavioralType
     {
+        [Test]
+        public void T()
+        {
+            var d = new D(2);
+        }
+
         /// <summary>
         ///     责任链模式 ⭐⭐
         ///     使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系
@@ -196,7 +223,7 @@ namespace DesignPattern.行为型
             {
                 var person = new Person();
                 var mouse = new 观察者模式.自带的接口.Mouse();
-                var cat = new 观察者模式.自带的接口.Cat(new List<IObserver<int>> {person});
+                var cat = new 观察者模式.自带的接口.Cat(new List<IObserver<int>> { person });
                 mouse.Subscribe(cat);
 
                 cat.Cry(1);
@@ -291,9 +318,9 @@ namespace DesignPattern.行为型
                 var str1 = "a+b+c";
                 var dir = new Dictionary<string, int>
                 {
-                    {"a", 1},
-                    {"b", 3},
-                    {"c", 2}
+                    { "a", 1 },
+                    { "b", 3 },
+                    { "c", 2 }
                 };
                 var cal = new Calculator(str);
                 Console.WriteLine(cal.run(dir));

@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 
 namespace DesignPattern.行为型.责任链模式.抽题
 {
+    /// <summary>
+    /// 责任链基类
+    /// </summary>
     public abstract class ExtractExamAbstractHandler
     {
         public ExtractExamAbstractHandler NextHandler { get; set; }
-
 
         public abstract ExtractExamFlowDto Handle(ExtractExamFlowDto flowDto);
 

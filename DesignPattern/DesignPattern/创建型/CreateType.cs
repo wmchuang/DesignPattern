@@ -20,7 +20,7 @@ namespace DesignPattern.创建型
     {
         /// <summary>
         /// 单例模式 ⭐⭐⭐⭐
-        /// 保证一个类仅有一个实例，并提供ige访问它的全局访问点
+        /// 保证一个类仅有一个实例，并提供一个访问它的全局访问点
         /// </summary>
         [Test]
         public void InstanceTest()
@@ -100,7 +100,6 @@ namespace DesignPattern.创建型
                 var builder2 = new SeniorBuilder();
                 boss.SetBuilder(builder1);
 
-                var computer = boss.GetComputer();
                 boss.Show(boss.GetComputer());
                 boss.SetBuilder(builder2);
                 boss.Show(boss.GetComputer());
