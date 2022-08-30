@@ -118,6 +118,5 @@ namespace DesignPattern.创建型
             var clone = prototype.Clone();
             Console.WriteLine($"{clone.Id}{clone.IntId}");
         }
-
     }
 }

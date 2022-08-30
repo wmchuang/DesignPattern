@@ -4,7 +4,7 @@ namespace DesignPattern.创建型.单例模式
 {
     //懒汉式
     //优点： 在第一次使用时才被创建，无需一直占用系统资源，实现了延迟加载
-    //缺点： 系统运行时就会创建对象，所以会占用资源
+    //缺点： 必须加锁 synchronized 才能保证单例，但加锁会影响效率。
     public sealed class Singleton1
     {
         private static Singleton1 _instance;
