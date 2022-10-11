@@ -41,6 +41,7 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         /// </summary>
         public void InsertQuarter()
         {
+            Console.WriteLine("操作--> 投币");
             _state.InsertQuarter();
         }
 
@@ -49,6 +50,7 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         /// </summary>
         public void EjectQuarter()
         {
+            Console.WriteLine("操作--> 退币");
             _state.EjectQuarter();
         }
 
@@ -57,6 +59,7 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         /// </summary>
         public void TurnCrank()
         {
+            Console.WriteLine("操作--> 转动曲柄");
             _state.TurnCrank();
         }
 
@@ -65,6 +68,7 @@ namespace DesignPattern.行为型.状态模式.糖果公司
         /// </summary>
         public void Dispense()
         {
+            Console.WriteLine("操作--> 发放糖果");
             _state.Dispense();
         }
     }

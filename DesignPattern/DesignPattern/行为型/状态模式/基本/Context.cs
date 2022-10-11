@@ -1,5 +1,3 @@
-using System;
-
 namespace DesignPattern.行为型.状态模式.基本
 {
     public class Context
@@ -8,7 +6,6 @@ namespace DesignPattern.行为型.状态模式.基本
 
         public void Request()
         {
-            Console.WriteLine("Context");
             _state.Handle(this);
         }
     }

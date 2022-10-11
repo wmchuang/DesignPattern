@@ -90,18 +90,18 @@ namespace DesignPattern.结构型
             {
                 // 我买了个苹果手机
                 Phone phone = new ApplePhone();
-            
+
                 // 现在想贴膜了
                 var applePhoneWithSticker = new Sticker(phone);
                 // 扩展贴膜行为
                 applePhoneWithSticker.Print();
-            
+
                 // 现在我想有挂件了
                 var applePhoneWithAccessories = new Accessories(phone);
                 // 扩展手机挂件行为
                 applePhoneWithAccessories.Print();
                 Console.WriteLine("----------------------");
-            
+
                 // 现在我同时有贴膜和手机挂件了
                 var sticker = new Sticker(phone);
                 var applePhoneWithAccessoriesAndSticker = new Accessories(sticker);
@@ -124,9 +124,11 @@ namespace DesignPattern.结构型
             {
                 var dark = new DarkRoast("黑咖啡");
                 var sugar = new Sugar("加糖", dark);
-                Console.WriteLine($"{sugar.GetDescription()}{sugar.Cost()}元");;
+                Console.WriteLine($"{sugar.GetDescription()}{sugar.Cost()}元");
+                ;
                 var milk = new Milk("加奶", sugar);
-                Console.WriteLine($"{milk.GetDescription()}{milk.Cost()}元");;
+                Console.WriteLine($"{milk.GetDescription()}{milk.Cost()}元");
+                ;
             }
         }
 
