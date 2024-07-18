@@ -12,8 +12,11 @@ using DesignPattern.结构型.装饰模式.基本;
 using DesignPattern.结构型.装饰模式.手机贴膜;
 using DesignPattern.结构型.适配器模式.基本;
 using DesignPattern.结构型.适配器模式.对象适配器模式.电源插头;
+using DesignPattern.结构型.适配器模式.类适配器模式.电压;
 using DesignPattern.结构型.适配器模式.类适配器模式.电源插头;
 using NUnit.Framework;
+using Phone = DesignPattern.结构型.装饰模式.手机贴膜.Phone;
+using Voltage220V = DesignPattern.结构型.适配器模式.对象适配器模式.电压.Voltage220V;
 
 namespace DesignPattern.结构型
 {
@@ -43,11 +46,23 @@ namespace DesignPattern.结构型
                 IThreeHole threehole = new PowerAdapter();
                 threehole.Request();
             }
+            
+            {
+                //类适配器模式
+                适配器模式.类适配器模式.电压.Phone phone = new 适配器模式.类适配器模式.电压.Phone();
+                phone.Charging(new VoltageAdapter());
+            }
 
             {
                 //对象适配器模式
                 ThreeHole threehole = new PowerAdapter1();
                 threehole.Request();
+            }
+            {
+                //对象适配器模式
+                适配器模式.对象适配器模式.电压.Phone phone = new 适配器模式.对象适配器模式.电压.Phone();
+                适配器模式.对象适配器模式.电压.VoltageAdapter voltageAdapter = new 适配器模式.对象适配器模式.电压.VoltageAdapter(new Voltage220V());
+                phone.Charging(voltageAdapter);
             }
         }
 
